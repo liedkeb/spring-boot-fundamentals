@@ -5,12 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
-/**
- * TODO: Describe this class (The first line - until the first dot - will interpret as the brief description).
- */
 @Entity
 public class Release {
     @Id
