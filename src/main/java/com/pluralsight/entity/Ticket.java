@@ -1,21 +1,12 @@
 package com.pluralsight.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Ticket {
     @Id
-    @GeneratedValue(strategy =  GenerationType.AUTO)
-    @Column( name = "application_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
     private String title;
     private String description;
 
@@ -32,11 +23,20 @@ public class Ticket {
     public Ticket() {
     }
 
-    public Ticket(String title, String description, Application application, Release release, String status) {
+    public Ticket(String title, String description,
+                  Application application, Release release, String status) {
         this.title = title;
         this.description = description;
         this.application = application;
         this.release = release;
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -78,13 +78,5 @@ public class Ticket {
 
     public void setRelease(Release release) {
         this.release = release;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 }

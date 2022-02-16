@@ -1,22 +1,16 @@
 package com.pluralsight.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-/**
- * TODO: Describe this class (The first line - until the first dot - will interpret as the brief description).
- */
 @Entity
 public class Application {
+
     @Id
-    @GeneratedValue(strategy =  GenerationType.AUTO)
-    @Column( name = "application_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="application_id")
     private Integer id;
 
-    @Column( name = "app_name", nullable = false)
+    @Column(name = "app_name", nullable = false)
     private String name;
 
     @Column(length = 2000)
@@ -26,12 +20,12 @@ public class Application {
     public Application() {
     }
 
-    public Application(String name, String owner, String description) {
+    public Application(String name, String owner,
+                       String description) {
         this.name = name;
-        this.description = description;
         this.owner = owner;
+        this.description = description;
     }
-
     public Integer getId() {
         return id;
     }
@@ -48,14 +42,6 @@ public class Application {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getOwner() {
         return owner;
     }
@@ -64,13 +50,22 @@ public class Application {
         this.owner = owner;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "Application{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", owner=" + owner +
                 ", description='" + description + '\'' +
-                ", owner='" + owner + '\'' +
                 '}';
     }
 }
